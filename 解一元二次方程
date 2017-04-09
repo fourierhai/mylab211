@@ -1,0 +1,33 @@
+#coding:utf-8
+'''这是用python编写的程序来解一元二次方程(quadratic equation)，目前正在学习《跟老齐学python，从入门到精通》，这段程序是本人没有看参考代码所编写的。一定会有bug，但程序运行完之后，还有有点小欣慰的。（可以扩展到一元三次方程？或者二元二次方程？）希望能再接再厉，早日称为一名合格的程序猿。
+运行环境 ：python 2.7
+时间：2017.4.7
+地点：lab211'''
+import math
+#让用户输入系数a，b，c
+fooa=raw_input('请输入一元二次方程的平方项的系数a:')
+print 'a=%s'% fooa
+
+foob=raw_input('请输入一元二次方程的一次项的系数b:')
+print 'b=%s'% foob
+
+fooc=raw_input('请输入一元二次方程的常数项c:')
+print 'c=%s'% fooc
+
+
+print '您输入的方程为：%s*(x**2)+(%s)*x+(%s) = 0'%(fooa,foob,fooc)
+fooa=float(fooa)    #将字符串类型的fooa，foob，fooc转换为浮点型
+foob=float(foob)
+fooc=float(fooc)
+delta=foob**2-4*fooa*fooc   #先求根号里的dalta，方便后面的计算
+if delta>0:                 #通过dalta的正负，判断方程有没有解
+    print '该方程有两个不相同的解'
+    x1=-(foob+math.sqrt(delta))/(2*fooa)
+    x2=-(foob-math.sqrt(delta))/(2*fooa)
+    print '方程的解x1:%f;x2=%f'%(x1,x2)
+elif delta==0:
+    print '该方程有两个相同的解'
+    x=-foob/(2*fooa)
+    print '方程的解为x1=x2=:%f'% x    
+else:
+    print '该方程无解'
