@@ -1,0 +1,46 @@
+#coding:utf-8
+#这是一个成绩排序，给定一组以字典输入的成绩表，-->（姓名，分数）。
+#定义四种函数，平均分，成绩排序，最高分，最低分
+#时间：2017.4.10
+#地点：lab211
+from __future__ import division
+
+
+def average_score(scores):                #计算平均分
+    score_values = scores.values()
+    sum_scores = sum(score_values)
+    average = sum_scores/len(score_values)
+    return average
+
+def sorted_score(scores):               #分数从高到低排序，姓名在前，分数在后
+    score_lst = [(scores[k],k) for k in scores]  #将（分数，姓名）组成一个列表
+    sort_lst = sorted(score_lst,reverse = True)    #按分数从高到低排序
+    return [(i[1],i[0]) for i in sort_lst]     #返回（姓名，分数）
+
+def max_score(scores):                   #成绩最高的姓名和分数，最高分可能不只一个人
+    lst=sorted_score(scores)          #引用上面的函数
+    max_score = lst[0][1]   #分数排名中的 第一名（lst[0]） 的分数-> lst[0][1],即为最高分
+    return [(i[0],i[1]) for i in lst if i[1] == max_score]
+    #如果列表中的迭代元素中的分数i[1]等于最高分，则返回 （姓名，分数）
+
+def min_score(scores):
+    lst = sorted_score(scores)
+    min_score = lst[len(lst)-1][1]   #成绩最低的分数定为最低分
+    return  [(i[0],i[1]) for i in lst if i[1] == min_score]
+    #同上，反正记住，最低分也不一定只有一个。
+
+if __name__ == '__main__':
+    examine_scores={'google':98,'facebook':99,'baidu':52,'alibaba':80,'yahoo':49,
+                    'IBM':70,'android':76,'apple':99,'zmazon':99}
+    ave=average_score(examine_scores)
+    print '平均分是：',ave
+    
+    sor=sorted_score(examine_scores)
+    print '分数从高到低排：',sor
+    
+    max=max_score(examine_scores)
+    print "最高分是：",max
+    
+    min=min_score(examine_scores)
+    print '最低分是：',min
+    
