@@ -1,0 +1,22 @@
+#coding:utf-8
+#时间：2017.4.12
+#地点：lab211
+#有了try-except之后，程序如果出现异常就不会直接中断了，而是以一种比较友好的提示出现
+#可以联想到我们输入邮箱格式不对的时候，会出现提醒：请输入正确的邮箱格式！
+#
+while 2:            #只要是True就行
+    print 'this is a devision program.'
+    c=raw_input('请输入"tonghai",否则就退出: ')
+    if c == 'tonghai':
+        a=raw_input('first number:')
+        b=raw_input('second number:')
+        try:
+            print float(a)/float(b)
+            print '*********************'
+        except ZeroDivisionError:   #必须是这个异常名称
+            print 'the second number can not be zero!'
+    else:
+        break
+            
+        
+        
