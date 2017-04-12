@@ -15,6 +15,8 @@ while 2:            #只要是True就行
             print '*********************'
         except ZeroDivisionError:   #必须是这个异常名称，或者可以不加异常名称
             print 'the second number can not be zero!'
+        excepy ValueError:          #当用户输入的不是数字的时候，捕获异常            多异常处理
+            print 'plesase input number!'
     else:
         break
             
