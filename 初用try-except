@@ -13,7 +13,7 @@ while 2:            #只要是True就行
         try:
             print float(a)/float(b)
             print '*********************'
-        except ZeroDivisionError:   #必须是这个异常名称
+        except ZeroDivisionError:   #必须是这个异常名称，或者可以不加异常名称
             print 'the second number can not be zero!'
     else:
         break
