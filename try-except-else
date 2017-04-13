@@ -1,0 +1,13 @@
+# coding=utf-8
+#时间：2017.4.13
+#地点：lab211
+while 1:
+    a=raw_input('the first number:')
+    b=raw_input('the second number:')
+    try:
+        c=float(a)/float(b)
+    except Exception,e:
+        print e
+        print 'try again'
+    else:
+        break
