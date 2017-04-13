@@ -17,8 +17,18 @@ while 2:            #只要是True就行
             print 'the second number can not be zero!'
         except ValueError:          #当用户输入的不是数字的时候，捕获异常            多异常处理
             print 'plesase input number!'
+       
+       #except (ZeroDivisionError,ValueError),e:         #自动打印内置的异常错误提示
+       #print e                                          #python 3是这样写:except (ZeroDivisionError,ValueError) as e: 
+        
+       
        #except (ZeroDivisionError,ValueError):          #也可以在一个except后面放多个异常参数
        #    print 'please input rightly!'
+       
+       
+       #except Exception,e:                              #自动捕捉任何异常，并返回异常信息
+       #print e                                          #就不需要写异常名称和返回异常的信息了
+    
     else:
         break
             
