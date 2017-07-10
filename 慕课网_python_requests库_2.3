@@ -8,6 +8,19 @@ print(response.headers)
 print('>>>Response Body:')
 print(reponse.text)
 
+#带参数的请求
+params_hello = {'param1' : 'hello', 'param2' : 'world'}
+#发送请求
+response = requests.get(URL,params = params_hello)
+#处理响应
+print('>>>Response Headers:')
+print(response.headers)
+print('>>>Status Code:')
+print(response.status_code)
+print(response.reason)
+print('>>>Response Body:')
+print(response.json())
+
 
 #不知道为啥 我定义了ues_simple_requests(）函数后，Run之后不报错，但是也不显示任何结果，代码如下，请大神指导、
 '''#-*-coding:utf-8 -*-
