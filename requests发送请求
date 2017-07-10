@@ -33,8 +33,39 @@ def json_request():
     print(response.request.headers)
     print(response.request.body)
     print(response.status_code)
+
+#除了用timeout参数来学习发送请求的异常处理，还有httperror，通过打印status.code来反映情况，本例中因为没有认证用户，所以会出现401的status.code    
+def timeout_request():
+    try:
+        response = requests.get(build_url('user/emails'),timeout = 10)
+        response.raise_for_status()
+    except exceptions.Timeout as e:
+        print(e.message)
+    except exceptions.HTTPError as e:
+        print(e.message)
+    else:
+        print(response.text)
+        print(response.status_code)
+        
+#自定义一个request请求，将headers换掉，用requests中Request和Session函数     
+def hard_requests():
+    from  requests import Request,Session
+    s=Session()
+    headers ={'User-Agent':'fake1.3.4'}
+    req = Request('GET',build_url('user/emails'),auth=('imoocdemo','imoocdemo123'),headers=headers)
+    prepped =req.prepare()
+    print(prepped.body)
+    print(prepped.headers)
+
+    resp =s.send(prepped,timeout=5)
+    print(resp.status_code)
+    print(resp.request.headers)
+    print(resp.text)
+
     
 if __name__ == '__main__':
     request_method()
     #params_request()
     #json_request()
+    #timeout_request()
+    #hard_request
