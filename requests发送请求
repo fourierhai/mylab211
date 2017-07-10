@@ -1,0 +1,40 @@
+#-*-coding:utf-8 -*-
+import requests
+import json
+URL = 'https://api.github.com'
+#在上面的URL后面加入endpoint这个参数，从而建立一个新的URL
+def build_url(endpoint):
+    return '/'.join([URL,endpoint])
+
+#以json的形式输出，缩进符为4
+def better_print(json_str):
+    return json.dumps(json.loads(json_str), indent = 4)
+
+#用requests方法来get资源，其中，URL调用build_url函数，输出调用better_print函数
+def request_method():
+    #查看用户信息,用户为imoocdemo(过去已经创建好了的)
+    response = requests.get(build_url('users/imoocdemo')
+    #查看当前用户的emails，而用auth登录当前用户，括号里的参数是账号和密码（不安全）
+    #response = requests.get(build_url('user/emails'),auth = ('imoocdemo','imoocdemo123'))
+    print(better_print(response.text))
+
+#带参数的请求，users是指get all users，since是指从第11个user开始查看
+def params_request():
+    #since的作用：The integer ID of the last User that you've seen.
+    response = requests.get(build_url('users'),params={'since':11})
+    print(better_print(response.text))
+    print(response.request.headers)
+    print(response.url)
+
+#用patch来轻量级修改信息，因为github上是用的json格式，所以就在用户认证的后面加入了json格式的参数，（还可以修改其他信息，比如email，直接在后面加逗号即可）
+def json_request():
+    response = requests.patch(build_url('user'),auth=('imoocdemo','imoocdemo123'),json = {'name':'tonghaihaha'})
+    print(better_print(response.text))
+    print(response.request.headers)
+    print(response.request.body)
+    print(response.status_code)
+    
+if __name__ == '__main__':
+    request_method()
+    #params_request()
+    #json_request()
