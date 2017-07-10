@@ -1,0 +1,26 @@
+#-*-coding:utf-8 -*-
+import requests
+URL = 'http://httpbin.org/get/ip'
+#windows操作系统 + python3.6 +之前没有用老师讲的将httpbin拷贝到本地（没有使用127.0.0.1）+没有自定义ues_simple_requests(）函数
+response = requests.get(URL)
+print('>>>Response Headers:')
+print(response.headers)
+print('>>>Response Body:')
+print(reponse.text)
+
+
+#不知道为啥 我定义了ues_simple_requests(）函数后，Run之后不报错，但是也不显示任何结果，代码如下，请大神指导、
+'''#-*-coding:utf-8 -*-
+import requests
+URL = 'http://httpbin.org/get/ip'
+
+def use_simple_requests():
+    response = requests.get(URL)
+    print('>>>Response Headers:')
+    print(response.headers)
+    print('>>>Response Body:')
+    print(reponse.text)
+if __name__ == '__name__'：
+    print('>>>Use simple requests')
+    use_simple_requests()'''
+    
