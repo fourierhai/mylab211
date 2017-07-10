@@ -22,7 +22,7 @@ print('>>>Response Body:')
 print(response.json())
 
 
-#不知道为啥 我定义了ues_simple_requests(）函数后，Run之后不报错，但是也不显示任何结果，代码如下，请大神指导、
+#下面是用自定义函数的形式（老师把__main__写成了__name__）
 '''#-*-coding:utf-8 -*-
 import requests
 URL = 'http://httpbin.org/get/ip'
@@ -32,8 +32,8 @@ def use_simple_requests():
     print('>>>Response Headers:')
     print(response.headers)
     print('>>>Response Body:')
-    print(reponse.text)
-if __name__ == '__name__'：
+    print(response.text)
+if __name__ == '__main__':
     print('>>>Use simple requests')
     use_simple_requests()'''
     
