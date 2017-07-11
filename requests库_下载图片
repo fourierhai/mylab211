@@ -1,0 +1,19 @@
+#-*-coding:utf-8 -*-
+#下载图片，Windows下保存在和你当前.py文件同一个目录下
+import requests
+def download_image():
+    #伪造headers信息
+    headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.86 Safari/537.36'}
+    #限定url，要下载的图片的url
+    url = 'http://cdn4.freepik.com/image/th/318-41747.jpg'
+    response = requests.get(url,headers = headers,stream = True)
+    from contextlib import closing
+    with closing(requests.get(url,headers=headers,stream=True)) as response:
+        #打开文件，自定义文件demo1.jpg，以写入的方式
+        with open('demo1.jpg','wb') as fd:
+            #每128写入一次，chunk只是随便命的名
+            for chunk in response.iter_content(128):
+                fd.write(chunk)
+download_image()
+
+
